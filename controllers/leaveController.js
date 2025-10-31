@@ -4,10 +4,8 @@ import Leave from "../models/Leave.js";
 
 const addLeave = async (req, res) => {
   try {
-    const { userId, leaveType, startDate, endDate, reason } = req.body;
-    const employee = await Employee.findOne({ userId });
-
-    console.log("leave");
+    const { employeeId, leaveType, startDate, endDate, reason } = req.body;
+    const employee = await Employee.findOne({ _id: employeeId });
 
     const newLeave = new Leave({
       employeeId: employee._id,

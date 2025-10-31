@@ -83,7 +83,7 @@ const addEmployee = async (req, res) => {
     const savedUser = await newUser.save();
 
     const newEmployee = new Employee({
-      userId: savedUser._id,
+      userId: newUser._id,
       employeeId,
       dob,
       gender,
@@ -92,8 +92,11 @@ const addEmployee = async (req, res) => {
       department,
       salary,
     });
+    console.log("saved employee is is", newEmployee);
 
-    await newEmployee.save();
+    const response = await newEmployee.save();
+
+    console.log("saved employee is is", response);
 
     return res
       .status(200)
